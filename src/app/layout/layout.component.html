@@ -1,0 +1,8 @@
+<div class="wrap" [attr.theme]="theme">
+  <app-header></app-header>
+  <div class="container" *ngIf="(isLoader| async) === true">
+    <mat-spinner></mat-spinner>
+  </div>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,149 @@
+<main>
+  <section>
+    <div class="container">
+      <app-error></app-error>
+
+      <div class="wrap d-grid">
+        <div class="left-part">
+          <div class="d-flex gap-2 mb-4">
+            <h1>Сторінка з постами</h1>
+            <div class="icon d-flex" *ngIf="isAuth" (click)="createPost()">
+              <mat-icon
+                class="mat-icon-rtl-mirror"
+                fontIcon="post_add"
+              ></mat-icon>
+            </div>
+
+            <div class="icon d-flex" *ngIf="isAuth" (click)="getAuthorPosts()">
+              <mat-icon class="mat-icon-rtl-mirror" fontIcon="face"></mat-icon>
+            </div>
+
+            <div class="icon d-flex" *ngIf="isFilter" (click)="clearFilters()">
+              <mat-icon
+                class="mat-icon-rtl-mirror"
+                fontIcon="cancel"
+              ></mat-icon>
+            </div>
+            <span>
+              {{
+                selectedTag ? "Фільтр за тегом: " + selectedTag : ""
+              }}
+            </span>
+          </div>
+          <div class="grid">
+            <div *ngFor="let item of posts" class="item">
+              <div class="icons d-flex gap-1">
+                <div
+                  class="icon d-flex"
+                  *ngIf="item.author.id === id"
+                  (click)="setSlug(item)"
+                >
+                  <mat-icon
+                    class="mat-icon-rtl-mirror"
+                    fontIcon="edit"
+                  ></mat-icon>
+                </div>
+
+                <div
+                  class="icon d-flex"
+                  *ngIf="item.author.id === id"
+                  (click)="deletePost(item.slug)"
+                >
+                  <mat-icon
+                    class="mat-icon-rtl-mirror"
+                    fontIcon="delete"
+                  ></mat-icon>
+                </div>
+              </div>
+              <h3>Title: {{ item.title }}</h3>
+              <p>Body: {{ item.body }}</p>
+              <div class="d-flex gap-1 tags">
+                <p
+                  *ngFor="let tag of item.tagList"
+                  class="tag"
+                  (click)="getPostsByTag(tag)"
+                >
+                  {{ tag }}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Кількість постів: {{ total }}</h3>
+          </div>
+        </div>
+        <app-tags></app-tags>
+      </div>
+
+      <mat-paginator
+        (page)="handlePageEvent($event)"
+        [length]="total"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </section>
+
+  <div
+    [ngClass]="{ 'modal-wrap': true, show: isOpenModal }"
+    (click)="closeModal()"
+  >
+    <div class="modal-inner" (click)="$event.stopPropagation()">
+      <app-error></app-error>
+      <p *ngIf="isSuccess" class="success">{{ isSuccess }}</p>
+      <form
+        [formGroup]="changePostForm"
+        (ngSubmit)="changePostFunc()"
+        class="form d-grid gap-2"
+      >
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Назва</mat-label>
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Введіть назву"
+            />
+          </mat-form-field>
+        </div>
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Опис</mat-label>
+            <input
+              matInput
+              formControlName="description"
+              placeholder="Введіть опис"
+            />
+          </mat-form-field>
+        </div>
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Повний текст</mat-label>
+            <textarea
+              matInput
+              formControlName="body"
+              placeholder="Введіть ваш текст"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Теги</mat-label>
+            <input
+              matInput
+              formControlName="tagList"
+              placeholder="Введіть теги через кому"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" type="submit">
+            Створити пост
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

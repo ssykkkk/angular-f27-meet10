@@ -1,0 +1,19 @@
+.tags{
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+.tag {
+  border: 1px solid #000;
+  border-radius: 20px;
+  padding: 4px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+.tag:hover {
+  background-color: #000;
+  color: #fff;
+}
+.active{
+  background-color: aqua;
+}

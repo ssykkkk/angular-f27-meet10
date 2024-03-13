@@ -1,0 +1,5 @@
+<div class="d-flex gap-1 tags">
+  <p *ngFor="let tag of tags" [ngClass]="{ 'tag': true, active: tag===activeTag }" (click)="getPostsByTag(tag)">
+    {{ tag }}
+  </p>
+</div>

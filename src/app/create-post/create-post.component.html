@@ -1,0 +1,59 @@
+<main>
+  <section>
+    <div class="container">
+      <app-error></app-error>
+      <p *ngIf="isSuccess" class="success">{{isSuccess}}</p>
+      <form
+        [formGroup]="addPostForm"
+        (ngSubmit)="sumbitForm()"
+        class="form d-grid gap-2"
+      >
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Назва</mat-label>
+            <input
+              matInput
+              formControlName="title"
+              placeholder="Введіть назву"
+            />
+          </mat-form-field>
+        </div>
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Опис</mat-label>
+            <input
+              matInput
+              formControlName="description"
+              placeholder="Введіть опис"
+            />
+          </mat-form-field>
+        </div>
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Повний текст</mat-label>
+            <textarea
+              matInput
+              formControlName="body"
+              placeholder="Введіть ваш текст"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="d-grid">
+          <mat-form-field class="example-full-width">
+            <mat-label>Теги</mat-label>
+            <input
+              matInput
+              formControlName="tagList"
+              placeholder="Введіть теги через кому"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" type="submit">
+            Створити пост
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

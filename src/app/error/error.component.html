@@ -1,0 +1,4 @@
+<p *ngIf="errorMessage !== ''" class="error">{{errorMessage}}</p>
+<div *ngIf="errorMessages .length > 0">
+  <p *ngFor="let item of errorMessages" class="error">{{item}}</p>
+</div>

@@ -1,0 +1,29 @@
+.menu a {
+  color: var(--link-menu);
+}
+.menu a.active-link {
+  color: red;
+}
+.active {
+  color: red;
+}
+.themes p {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+header[theme="dark"] .menu a,
+header[theme="dark"] .themes p {
+  color: #fff;
+}
+header[theme="dark"] .themes p.active,
+header[theme="dark"] .menu a.active-link {
+  color: red;
+}
+
+.wrap{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr max-content max-content;
+}

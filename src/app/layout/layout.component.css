@@ -1,0 +1,14 @@
+.wrap {
+  background-color: #fff;
+}
+.wrap[theme="dark"] {
+  background-color: black;
+  color: #fff;
+}
+.wrap[theme="dark"] * {
+  color: #fff;
+}
+
+.wrap[theme="dark"] footer {
+  background-color: black;
+}

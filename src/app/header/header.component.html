@@ -1,0 +1,28 @@
+<header [attr.theme]="theme">
+  <div class="container">
+    <div class="wrap gap-5">
+      <nav>
+        <ul class="menu d-flex gap-2">
+          <li *ngFor="let item of arr_links">
+            <a [routerLink]="item.link" routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }">{{item.title}}</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="d-flex gap-1 themes">
+        <button mat-raised-button color="primary" *ngIf="(token | async) !== ''" (click)="logout()">Logout</button>
+        <a [routerLink]="'auth'" [routerLink]="'auth'" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }" *ngIf="(token | async)===''" class="btn">Login</a>
+        <p *ngFor="let item of header_langs" [ngClass]="{'active': lang === item}" (click)="changeLang(item)">
+          {{item}}</p>
+      </div>
+
+      <div class="d-flex gap-1 themes">
+        <p *ngFor="let item of header_themes" [ngClass]="{'active': theme === item}" (click)="changeTheme(item)">
+          {{item}}</p>
+      </div>
+    </div>
+  </div>
+</header>

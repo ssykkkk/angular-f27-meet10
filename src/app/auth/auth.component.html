@@ -1,0 +1,93 @@
+<main>
+  <section>
+    <div class="container">
+      <div class="wrap">
+       <app-error></app-error>
+        <mat-tab-group>
+          <mat-tab label="Логін">
+            <h2>Логін</h2>
+            <form
+              [formGroup]="reactiveForm"
+              (ngSubmit)="sumbitReactiveForm()"
+              class="form d-grid gap-2"
+            >
+              <div class="d-grid">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    type="email"
+                    matInput
+                    formControlName="email"
+                    placeholder="Ex. pat@example.com"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="d-grid">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Password</mat-label>
+                  <input
+                    type="password"
+                    matInput
+                    formControlName="password"
+                    placeholder="Введіть пароль"
+                  />
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button color="primary" type="submit">
+                  Логін
+                </button>
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab label="Реестрація">
+            <h2>Реестрація</h2>
+            <form
+              [formGroup]="regForm"
+              (ngSubmit)="sumbitRegForm()"
+              class="form d-grid gap-2"
+            >
+              <div class="d-grid">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Username</mat-label>
+                  <input
+                    matInput
+                    formControlName="username"
+                    placeholder="Введіть username"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="d-grid">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    type="email"
+                    matInput
+                    formControlName="email"
+                    placeholder="Ex. pat@example.com"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="d-grid">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Password</mat-label>
+                  <input
+                    type="password"
+                    matInput
+                    formControlName="password"
+                    placeholder="Введіть пароль"
+                  />
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button color="primary" type="submit">
+                  Реестрація
+                </button>
+              </div>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </section>
+</main>
